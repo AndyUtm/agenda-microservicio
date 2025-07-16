@@ -1,0 +1,24 @@
+<h2>Categorías</h2>
+
+<ul>
+  <li *ngFor="let cat of categorias">
+    <!-- Vista normal -->
+    <div *ngIf="editandoId !== cat.id">
+      {{ cat.nombre }}
+      <button (click)="editarCategoria(cat)">Editar</button>
+      <button (click)="eliminarCategoria(cat.id)">Eliminar</button>
+    </div>
+
+    <!-- Vista de edición -->
+    <div *ngIf="editandoId === cat.id">
+      <input [(ngModel)]="nombreEditado" placeholder="Nuevo nombre">
+      <button (click)="guardarEdicionCategoria()">Guardar</button>
+      <button (click)="cancelarEdicionCategoria()">Cancelar</button>
+    </div>
+  </li>
+</ul>
+
+<!-- Formulario para agregar nueva categoría -->
+<h3>Agregar nueva categoría</h3>
+<input [(ngModel)]="nuevaCategoria" placeholder="Nueva categoría">
+<button (click)="agregarCategoria()" [disabled]="!nuevaCategoria.trim()">Agregar</button>

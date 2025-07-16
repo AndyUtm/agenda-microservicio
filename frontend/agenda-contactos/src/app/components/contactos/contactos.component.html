@@ -1,0 +1,35 @@
+<h2>Contactos</h2>
+
+<ul>
+  <li *ngFor="let contacto of contactos">
+    <!-- Vista normal -->
+    <div *ngIf="editandoContactoId !== contacto.id">
+      {{ contacto.nombre }} - {{ contacto.telefono }} ({{ obtenerNombreCategoria(contacto.categoriaId) }})
+      <button (click)="editarContacto(contacto)">Editar</button>
+      <button (click)="eliminarContacto(contacto.id)">Eliminar</button>
+    </div>
+
+    <!-- Vista de edición -->
+    <div *ngIf="editandoContactoId === contacto.id">
+      <input [(ngModel)]="contactoEditado.nombre" placeholder="Nombre">
+      <input [(ngModel)]="contactoEditado.telefono" placeholder="Teléfono">
+      <select [(ngModel)]="contactoEditado.categoriaId">
+        <option *ngFor="let cat of categorias" [value]="cat.id">{{ cat.nombre }}</option>
+      </select>
+      <button (click)="guardarEdicionContacto()">Guardar</button>
+      <button (click)="cancelarEdicionContacto()">Cancelar</button>
+    </div>
+  </li>
+</ul>
+
+<!-- Formulario para agregar nuevo contacto -->
+<h3>Agregar nuevo contacto</h3>
+<input [(ngModel)]="nuevoContacto.nombre" placeholder="Nombre">
+<input [(ngModel)]="nuevoContacto.telefono" placeholder="Teléfono">
+<select [(ngModel)]="nuevoContacto.categoriaId">
+  <option value="">Selecciona categoría</option>
+  <option *ngFor="let cat of categorias" [value]="cat.id">{{ cat.nombre }}</option>
+</select>
+<button (click)="agregarContacto()" [disabled]="!nuevoContacto.nombre.trim() || !nuevoContacto.telefono.trim() || !nuevoContacto.categoriaId">
+  Agregar
+</button>
