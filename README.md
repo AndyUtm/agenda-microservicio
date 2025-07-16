@@ -26,7 +26,7 @@ El sistema está compuesto por:
 ### 1. Clonar el repositorio
 
 ````bash
-git clone https://github.com/[TU_USUARIO]/agenda-microservicios.git
+git clone https://github.com/AndyUtm/agenda-microservicios.git
 cd agenda-microservicios
 
 
@@ -55,20 +55,6 @@ ng serve
 
 
 
-
-
-
-
-
-
-
-
-
-### 1. Clonar el repositorio
-
-```bash
-git clone https://github.com/AndyUtm/agenda-microservicios.git
-cd agenda-microservicios
 
 
 
